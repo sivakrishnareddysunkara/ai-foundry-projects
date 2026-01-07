@@ -1,0 +1,55 @@
+# Feature Flags
+enable_projects = true  # Set to false to skip project creation
+enable_agents   = true  # Set to false to skip agent configuration (requires enable_projects = true)
+
+# Location and Resource Group
+location            = "East US"
+resource_group_name = "rg-aml-test-demo2"
+
+# Projects Configuration
+projects = [
+  {
+    name        = "projects-testing-agents"
+    displayName = "Testing Agents Project"
+    description = "Project for testing AI agents"
+  },
+  {
+    name        = "projects-demo-app"
+    displayName = "Demo Application"
+    description = "Demo project for AI applications"
+  }
+]
+
+# Agents Configuration (only used if enable_projects = true)
+agents = [
+  {
+    project_name = "projects-testing-agents"
+    name         = "agent-data-analyst"
+    displayName  = "Data Analyst Agent"
+    description  = "Agent for data analysis tasks"
+    instructions = "You are a helpful data analyst. Analyze provided data and provide insights."
+    model        = "gpt-4o"
+    temperature  = 0.7
+    top_p        = 0.95
+  },
+  {
+    project_name = "projects-testing-agents"
+    name         = "agent-code-reviewer"
+    displayName  = "Code Reviewer Agent"
+    description  = "Agent for code review"
+    instructions = "You are an expert code reviewer."
+    model        = "gpt-4o"
+    temperature  = 0.5
+    top_p        = 0.9
+  },
+  {
+    project_name = "projects-demo-app"
+    name         = "agent-content-creator"
+    displayName  = "Content Creator Agent"
+    description  = "Agent for content creation"
+    instructions = "You are a creative content writer."
+    model        = "gpt-4o"
+    temperature  = 0.9
+    top_p        = 0.95
+  }
+]
